@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "../components/views/layout";
 import Dashboard from "../components/views/dashboard";
 import Login from "../components/auth/login";
-// import Register from "../components/auth/register";
+import Register from "../components/auth/register";
 
 export default function Router(props) {
   //   const authToken = localStorage.getItem("authToken");
@@ -14,7 +14,7 @@ export default function Router(props) {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/register" element={<Register />} /> */}
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Layout>
     </React.Fragment>

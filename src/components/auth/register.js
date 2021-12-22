@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import TextFieldWrapper from "../common/formFields/textFieldWrapper";
 import { Grid, Paper, Button } from "@mui/material";
-import * as Yup from "yup";
 
-const Login = () => {
+const Register = () => {
   const paperStyle = {
     padding: 20,
-    height: "40vh",
+    height: "60vh",
     width: 280,
     margin: "20px auto",
   };
@@ -16,10 +15,7 @@ const Login = () => {
     username: "",
     password: "",
   };
-  const validationSchema = {
-    username: "",
-    password: "",
-  };
+
   const buttonStyle = { margin: 20 };
   const onSubmit = (values) => {
     console.log(values);
@@ -29,40 +25,53 @@ const Login = () => {
     <Grid>
       <Paper elevation={10} style={paperStyle}>
         <Grid align="center">
-          <h1>Login</h1>
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={onSubmit}
-          >
+          <h1>Register</h1>
+          <Formik initialValues={initialValues} onSubmit={onSubmit}>
             {({ values, isSubmitting }) => (
               <Form>
                 <TextFieldWrapper
-                  label="Username"
+                  label="Name"
                   name="username"
-                  placeholder="Username"
+                  placeholder="Full Name"
+                />
+
+                <TextFieldWrapper
+                  label="Phonenumber"
+                  name="phonenumber"
+                  placeholder="Phone Number"
+                />
+                <TextFieldWrapper
+                  label="Email"
+                  name="email"
+                  type="email"
+                  placeholder="example@domain.com"
                 />
                 <TextFieldWrapper
                   label="Password"
                   name="password"
                   type="password"
                 />
+                <TextFieldWrapper
+                  label="Confirm Password"
+                  name="confirmPassword"
+                  type="text"
+                /> 
                 <Button
                   type="submit"
                   variant="contained"
                   disabled={isSubmitting}
                   style={buttonStyle}
                 >
-                  login
+                  Register
                 </Button>
               </Form>
             )}
           </Formik>
-          Not a User. Register <Link to="/register"> here</Link>
+          Already Registered ? <Link to="/login"> Login Here</Link>
         </Grid>
       </Paper>
     </Grid>
   );
 };
 
-export default Login;
+export default Register;
