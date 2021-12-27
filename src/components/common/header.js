@@ -25,6 +25,7 @@ const Header = (props) => {
       <AppBar position="static" style={{ background: "#1d3557" }}>
         <Toolbar variant="regular">
           <MenuLink route="/" linkName="Pizza Order" />
+          <MenuLink route="/toppings" linkName="Toppings CRUD" />
           <MenuLink
             route="/login"
             linkName={linkName}
