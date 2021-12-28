@@ -9,6 +9,7 @@ import {
   AppBar,
   Box,
   Toolbar,
+  Badge,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LocalPizzaIcon from "@mui/icons-material/LocalPizza";
@@ -58,14 +59,16 @@ const Header = (props) => {
             </Box>
 
             <IconButton aria-label="add to shopping cart">
-              <ShoppingCartIcon
-                color="secondary"
-                sx={{
-                  "&:hover": {
-                    color: "#e32929",
-                  },
-                }}
-              />
+              <Badge badgeContent={17} color="error">
+                <ShoppingCartIcon
+                  color="secondary"
+                  sx={{
+                    "&:hover": {
+                      color: "#e32929",
+                    },
+                  }}
+                />
+              </Badge>
             </IconButton>
             <MenuLink
               route="/login"
