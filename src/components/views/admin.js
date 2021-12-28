@@ -1,7 +1,7 @@
 import React from "react";
 import ToppingListing from "../toppings/toppingListing";
 
-function Toppings(props) {
+function AdminDashboard(props) {
   return (
     <React.Fragment>
       <ToppingListing />
@@ -9,4 +9,4 @@ function Toppings(props) {
   );
 }
 
-export default Toppings;
+export default AdminDashboard;

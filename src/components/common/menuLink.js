@@ -5,20 +5,25 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: "none",
-    color: "#f1faee",
+    color: "#982121",
     fontSize: "16px",
     fontWeight: 600,
-    marginLeft: theme.spacing(16),
     "&:hover": {
-      color: "#a8dadc",
+      color: "#e32929",
     },
+  },
+  logoDiv: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
   },
 }));
 
-const MenuLink = ({ route, linkName, clickHandler }) => {
+const MenuLink = ({ route, linkName, clickHandler, ...props }) => {
   const classes = useStyles();
   return (
     <Link to={route} className={classes.link} onClick={clickHandler}>
+      <div className={classes.logoDiv}>{props.children}</div>
       {linkName}
     </Link>
   );

@@ -23,7 +23,13 @@ export default function BasicModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Add</Button>
+      <Button
+        onClick={handleOpen}
+        variant="contained"
+        sx={{ marginRight: 1.2, marginBottom: 1.2 }}
+      >
+        Add
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

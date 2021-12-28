@@ -1,14 +1,30 @@
 import React, { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import { connect } from "react-redux";
+
+import { makeStyles } from "@material-ui/core";
+import {
+  Typography,
+  IconButton,
+  Container,
+  AppBar,
+  Box,
+  Toolbar,
+  Badge,
+} from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import LocalPizzaIcon from "@mui/icons-material/LocalPizza";
 
 import MenuLink from "./menuLink";
 
 import { logout } from "../../redux/actions/authActions";
 
 const authToken = localStorage.getItem("authToken");
+
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    background: "linear-gradient(45deg, #ff8f1f 30%, #ffb80e 90%)",
+  },
+}));
 
 const Header = (props) => {
   const [linkName, setLinkName] = useState(authToken ? "Logout" : "Login");
@@ -20,18 +36,47 @@ const Header = (props) => {
     logout();
   };
 
+  const classes = useStyles();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ background: "#1d3557" }}>
-        <Toolbar variant="regular">
-          <MenuLink route="/" linkName="Pizza Order" />
-          <MenuLink route="/toppings" linkName="Toppings CRUD" />
-          <MenuLink
-            route="/login"
-            linkName={linkName}
-            clickHandler={authToken ? logoutUser : null}
-          />
-        </Toolbar>
+      <AppBar position="static" className={classes.appBar}>
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Typography
+              variant="h4"
+              noWrap
+              component="div"
+              sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+            >
+              <MenuLink route="/" linkName="APNA PIZZA">
+                <LocalPizzaIcon />
+              </MenuLink>
+            </Typography>
+
+            <Box sx={{ flexGrow: 1, display: "flex" }}>
+              <MenuLink route="/admin" linkName="Admin Dashboard" />
+            </Box>
+
+            <IconButton aria-label="add to shopping cart">
+              <Badge badgeContent={17} color="error">
+                <ShoppingCartIcon
+                  color="secondary"
+                  sx={{
+                    "&:hover": {
+                      color: "#e32929",
+                    },
+                  }}
+                />
+              </Badge>
+            </IconButton>
+            <MenuLink
+              route="/login"
+              linkName={linkName}
+              clickHandler={authToken ? logoutUser : null}
+            />
+          </Toolbar>
+        </Container>
       </AppBar>
     </Box>
   );

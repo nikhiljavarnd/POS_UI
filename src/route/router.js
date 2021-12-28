@@ -5,7 +5,7 @@ import Layout from "../components/views/layout";
 import Dashboard from "../components/views/dashboard";
 import Login from "../components/auth/login";
 import Register from "../components/auth/register";
-import Toppings from "../components/views/toppings";
+import AdminDashboard from "../components/views/admin";
 
 export default function Router(props) {
   //   const authToken = localStorage.getItem("authToken");
@@ -17,7 +17,7 @@ export default function Router(props) {
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/toppings" element={<Toppings />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
       </Layout>
     </React.Fragment>
