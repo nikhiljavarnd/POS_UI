@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import * as Yup from "yup";
+import { Icon } from "@material-ui/core";
 
 
 const style = {
@@ -17,8 +18,8 @@ const style = {
   width: 400,
   bgcolor: "",
   
-  boxShadow: 0,
-  p: 4,
+  
+  p: 0,
 };
 
 const AddTopping = () => {
@@ -90,13 +91,13 @@ export default function BasicModal() {
 
   return (
     <div>
-      <Button
-        onClick={handleOpen}
+      
+        <Icon className="add-icon" onClick={handleOpen}
         variant="contained"
-        sx={{ marginRight: 1.2, marginBottom: 1.2 }}
-      >
-        Add
-      </Button>
+        sx={{ marginRight: 1.2, marginBottom: 1.2 }} style={{ fontSize: "35px" }}>
+                  add_circle
+                </Icon>
+      
       <Modal
         open={open}
         onClose={handleClose}
