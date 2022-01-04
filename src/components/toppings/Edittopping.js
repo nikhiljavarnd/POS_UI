@@ -1,12 +1,10 @@
 import React from "react";
-
 import { Formik, Form } from "formik";
 import TextFieldWrapper from "../common/formFields/textFieldWrapper";
 import { Grid, Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-
 import { Icon } from "@material-ui/core";
 
 
@@ -20,14 +18,10 @@ const style = {
   p: 0,
 };
 
-
-
-export default function BasicModal() {
+export default function BasicModal(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-
   const paperStyle = {
     padding: 0,
     height: "40vh",
@@ -49,14 +43,13 @@ export default function BasicModal() {
     console.log(values);
   };
 
-
   return (
     <div>
-      <Button  onClick={handleOpen} sx={{ marginLeft: 1.2, marginBottom: 1.2 }}>
-        <Icon className="add-icon" 
+      <Button onClick={handleOpen}>
+        <Icon className="edit-icon" 
         variant="contained"
-        >
-                  add_circle
+        sx={{ marginRight: 1.2, marginBottom: 1.2 }} style={{ fontSize: "24px" }}>
+                  edit_circle
                 </Icon>
                 </Button>
       <Modal
@@ -70,7 +63,7 @@ export default function BasicModal() {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             
           <Grid align="center" style={paperStyle}>
-          <h1>Add Topping</h1>
+          <h1>Edit Topping</h1>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -81,12 +74,13 @@ export default function BasicModal() {
                 <TextFieldWrapper
                   label="Topping Name"
                   name="topping"
-                  placeholder=""
+                  placeholder={props.values}
                 />
                 <TextFieldWrapper
                   label="Price"
                   name="price"
                   type=""
+                  placeholder={props.values}
                 />
                 <Button
                   type="submit"
@@ -94,14 +88,12 @@ export default function BasicModal() {
                   disabled={isSubmitting}
                   style={buttonStyle}
                 >
-                  Add Topping
+                  Edit Topping
                 </Button>
               </Form>
             )}
-          </Formik>
-          
-        </Grid>
-        
+          </Formik>    
+        </Grid>    
           </Typography>
         </Box>
       </Modal>
