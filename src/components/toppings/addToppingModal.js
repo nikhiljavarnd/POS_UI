@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import { Formik, Form } from "formik";
 import TextFieldWrapper from "../common/formFields/textFieldWrapper";
-import { Grid, Paper, Button } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import * as Yup from "yup";
+
 import { Icon } from "@material-ui/core";
 
 
@@ -16,18 +16,24 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "",
-  
-  
+  bgcolor: "white",
   p: 0,
 };
 
-const AddTopping = () => {
+
+
+export default function BasicModal() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+
   const paperStyle = {
-    padding: 20,
+    padding: 0,
     height: "40vh",
     width: 280,
-    margin: "20px auto",
+    margin: "auto",
+    
   };
   const initialValues = {
     topping: "",
@@ -37,16 +43,33 @@ const AddTopping = () => {
     topping: "",
     price: "",
   };
-  const buttonStyle = { margin: 20 };
+  const buttonStyle = { margin: 40 };
 
   const onSubmit = (values) => {
     console.log(values);
   };
 
+
   return (
-    <Grid>
-      <Paper elevation={10} style={paperStyle}>
-        <Grid align="center">
+    <div>
+      
+        <Icon className="add-icon" onClick={handleOpen}
+        variant="contained"
+        sx={{ marginRight: 1.2, marginBottom: 1.2 }} style={{ fontSize: "35px" }}>
+                  add_circle
+                </Icon>
+      
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            
+          <Grid align="center" style={paperStyle}>
           <h1>Add Topping</h1>
           <Formik
             initialValues={initialValues}
@@ -78,36 +101,7 @@ const AddTopping = () => {
           </Formik>
           
         </Grid>
-      </Paper>
-    </Grid>
-  );
-};
-
-
-export default function BasicModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  return (
-    <div>
-      
-        <Icon className="add-icon" onClick={handleOpen}
-        variant="contained"
-        sx={{ marginRight: 1.2, marginBottom: 1.2 }} style={{ fontSize: "35px" }}>
-                  add_circle
-                </Icon>
-      
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <AddTopping />
+        
           </Typography>
         </Box>
       </Modal>
