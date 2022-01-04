@@ -11,10 +11,9 @@ import {
 } from "@material-ui/core";
 import { Icon } from "@material-ui/core";
 
-<<<<<<< HEAD
 import AddToppingModal from "./addToppingModal"
-=======
->>>>>>> 72d43f314109edc78e2e1bd3041e0483bd34a65d
+import Edittopping from "./Edittopping";
+
 
 function createData(name, price) {
   return { name, price };
@@ -62,31 +61,25 @@ const ToppingListing = (props) => {
               
                 < TableCell align="right">
               <div className="add-items">
-<<<<<<< HEAD
-                <AddToppingModal />
-                
-=======
-                <Icon className="add-icon" style={{ fontSize: "35px" }}>
-                  add_circle
-                </Icon>
->>>>>>> 72d43f314109edc78e2e1bd3041e0483bd34a65d
+                <AddToppingModal/>
               </div>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rows.map((row,index) => (
             <TableRow
-              key={row.name}
+              key={index}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+
             >
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" placeholder={row.name}>
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.price}</TableCell>
+              <TableCell align="right" placeholder={row.price}>{row.price}</TableCell>
 
               <TableCell align="right">
-                <Icon className="edit-icon">edit_circle</Icon>
+                <Edittopping/>
               </TableCell>
               <TableCell align="center">
                 <Icon className="del-icon">delete_circle</Icon>
