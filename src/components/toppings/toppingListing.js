@@ -11,7 +11,10 @@ import {
 } from "@material-ui/core";
 import { Icon } from "@material-ui/core";
 
+<<<<<<< HEAD
 import AddToppingModal from "./addToppingModal"
+=======
+>>>>>>> 72d43f314109edc78e2e1bd3041e0483bd34a65d
 
 function createData(name, price) {
   return { name, price };
@@ -59,8 +62,14 @@ const ToppingListing = (props) => {
               
                 < TableCell align="right">
               <div className="add-items">
+<<<<<<< HEAD
                 <AddToppingModal />
                 
+=======
+                <Icon className="add-icon" style={{ fontSize: "35px" }}>
+                  add_circle
+                </Icon>
+>>>>>>> 72d43f314109edc78e2e1bd3041e0483bd34a65d
               </div>
             </TableCell>
           </TableRow>
