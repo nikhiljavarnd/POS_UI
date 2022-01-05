@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
   Typography,
@@ -7,34 +7,22 @@ import {
   CardContent,
   CardActions,
   Card,
-  Box,
+  Button,
 } from "@mui/material/";
 import ToppingModal from "./toppingModal";
-import { Formik, Form } from "formik";
-
-import DropdownWrapper from "../common/formFields/dropdownWrapper";
 
 const PizzaCard = ({ pizza }) => {
-  const sizeOptions = [
-    {
-      name: "Regular",
-      value: 0,
-    },
-    {
-      name: "Medium",
-      value: 1,
-    },
-    {
-      name: "Large",
-      value: 2,
-    },
-  ];
-  const FORM_INITIAL_VALUES = {
-    size: "",
-    qty: "",
-  };
+  const [open, setOpen] = useState(false);
+  const [pizzaData, setPizzaData] = useState({});
 
-  const onSubmit = (values, { setSubmitting }) => {};
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const addDataToToppingModal = (pizza) => {
+    setPizzaData(pizza);
+    console.log(pizza);
+    handleOpen();
+  };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -42,6 +30,7 @@ const PizzaCard = ({ pizza }) => {
         component="img"
         alt="green iguana"
         height="380"
+        style={{ objectFit: "contain" }}
         image={pizza.image}
       />
       <CardContent>
@@ -59,19 +48,6 @@ const PizzaCard = ({ pizza }) => {
         <Typography variant="body2" color="secondary">
           {pizza.description}
         </Typography>
-        <Formik initialValues={FORM_INITIAL_VALUES} onSubmit={onSubmit}>
-          {({ values, isSubmitting }) => {
-            return (
-              <Form>
-                <DropdownWrapper
-                  name="size"
-                  options={sizeOptions}
-                  label="Select Size"
-                />
-              </Form>
-            );
-          }}
-        </Formik>
       </CardContent>
       <CardActions color="secondary">
         <Typography
@@ -81,8 +57,15 @@ const PizzaCard = ({ pizza }) => {
         >
           {`Price: ${pizza.price}`}
         </Typography>
+        <Button
+          onClick={() => addDataToToppingModal(pizza)}
+          variant="contained"
+          sx={{ marginRight: 1.2, marginBottom: 1.2 }}
+        >
+          Add
+        </Button>
 
-        <ToppingModal />
+        <ToppingModal open={open} handleClose={handleClose} pizza={pizzaData} />
       </CardActions>
     </Card>
   );
