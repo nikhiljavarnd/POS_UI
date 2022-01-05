@@ -11,9 +11,13 @@ import {
 } from "@material-ui/core";
 import { Icon } from "@material-ui/core";
 
+import AddToppingModal from "./addToppingModal"
+import Edittopping from "./Edittopping";
+import Deletetopping from "./deletetopping";
 
 function createData(name, price) {
   return { name, price };
+  
 }
 
 const rows = [
@@ -58,29 +62,28 @@ const ToppingListing = (props) => {
               
                 < TableCell align="right">
               <div className="add-items">
-                <Icon className="add-icon" style={{ fontSize: "35px" }}>
-                  add_circle
-                </Icon>
+                <AddToppingModal/>
               </div>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rows.map((row,index) => (
             <TableRow
-              key={row.name}
+              key={index}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+
             >
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" placeholder={row.name}>
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.price}</TableCell>
+              <TableCell align="right" placeholder={row.price}>{row.price}</TableCell>
 
               <TableCell align="right">
-                <Icon className="edit-icon">edit_circle</Icon>
+                <Edittopping/>
               </TableCell>
               <TableCell align="center">
-                <Icon className="del-icon">delete_circle</Icon>
+                <Deletetopping/>
               </TableCell>
             </TableRow>
           ))}
