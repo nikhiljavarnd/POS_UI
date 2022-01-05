@@ -3,6 +3,7 @@ import "./ProfileCard.css";
 import { Grid, Typography, Button } from "@material-ui/core";
 import Switch from "@mui/material/Switch";
 import pizzaImg from "./img/pizza.png";
+import ProfileEditModal from "./ProfileEditModal";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
@@ -24,9 +25,8 @@ function ProfileCard() {
           </Typography>
         </Grid>
         <Grid item xs={2}>
-          <Button variant="contained" style={{ padding: "5px 30px" }}>
-            Edit
-          </Button>
+            <ProfileEditModal />
+          
           <Grid style={{ marginTop: "10px" }}>
             <Typography variant="subtitle1">
               Veg only
