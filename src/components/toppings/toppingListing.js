@@ -13,10 +13,11 @@ import { Icon } from "@material-ui/core";
 
 import AddToppingModal from "./addToppingModal"
 import Edittopping from "./Edittopping";
-
+import Deletetopping from "./deletetopping";
 
 function createData(name, price) {
   return { name, price };
+  
 }
 
 const rows = [
@@ -82,7 +83,7 @@ const ToppingListing = (props) => {
                 <Edittopping/>
               </TableCell>
               <TableCell align="center">
-                <Icon className="del-icon">delete_circle</Icon>
+                <Deletetopping/>
               </TableCell>
             </TableRow>
           ))}
