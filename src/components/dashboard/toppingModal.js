@@ -10,6 +10,12 @@ import {
   Button,
   ButtonGroup,
   Stack,
+  Radio,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  Slide,
+  useScrollTrigger,
 } from "@mui/material";
 import { makeStyles } from "@material-ui/core";
 
@@ -44,10 +50,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BasicModal({ open, handleClose, pizza }) {
+export default function ToppingModal({ open, handleClose, pizza }) {
   const classes = useStyles();
 
   const [pizzaQuantity, setPizzaQuantity] = useState(1);
+  const [selectedValue, setSelectedValue] = React.useState("a");
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
 
   const addPizza = () => {
     setPizzaQuantity(pizzaQuantity + 1);
@@ -56,6 +67,7 @@ export default function BasicModal({ open, handleClose, pizza }) {
   const removePizza = () => {
     setPizzaQuantity(pizzaQuantity - 1);
   };
+
   return ReactDOM.createPortal(
     <Modal
       open={open}
@@ -64,23 +76,25 @@ export default function BasicModal({ open, handleClose, pizza }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Grid container spacing={2} columns={16}>
-          <Grid item xs={8}>
+        <Grid container>
+          <Grid item xs mr={4}>
             <Typography variant="h6">{pizza.name}</Typography>
-            <CardMedia
-              className={classes.media}
-              image={pizza.image}
-              title={pizza.name}
-            />
+            <Box sx={{ border: "1px solid grey", borderRadius: "8px" }}>
+              <CardMedia
+                className={classes.media}
+                image={pizza.image}
+                title={pizza.name}
+              />
+            </Box>
             <Typography variant="p">{pizza.description}</Typography>
-            <Grid container spacing={3} mt={2}>
-              <Grid item xs="auto">
+            <Grid container mt={2}>
+              <Grid item>
                 <Typography variant="p">
                   <b>{`Price: ${pizza.price}`}</b>
                 </Typography>
               </Grid>
               <Grid item xs={6}></Grid>
-              <Grid item xs>
+              <Grid item xs align="right">
                 <ButtonGroup
                   variant="contained"
                   aria-label="outlined primary button group"
@@ -97,23 +111,147 @@ export default function BasicModal({ open, handleClose, pizza }) {
               </Grid>
             </Grid>
           </Grid>
-
-          <Divider orientation="vertical" flexItem />
-
+          <Divider orientation="vertical" flexItem></Divider>
           {/* Second Half */}
-          <Grid item xs={6}>
-            <Divider orientation="vertical" flexItem />
-            <Stack>
-              <Grid container spacing={2}>
-                <Grid item xs={10}>
-                  Serves
+          <Grid item xs>
+            <Box
+              style={{
+                maxHeight: "60vh",
+                overflowY: "auto",
+                overflowX: "hidden",
+              }}
+            >
+              <Stack mr={2}>
+                <Grid container m={2}>
+                  <Grid item xs>
+                    Serves
+                  </Grid>
+                  <Grid item xs align="right">
+                    (select a size)
+                  </Grid>
                 </Grid>
-                <Grid item xs={6} align="right">
-                  (select a size)
+
+                {/* Serves Part */}
+                <Grid container direction="row" alignItems="center">
+                  <Grid item xs ml={2}>
+                    <Radio
+                      checked={selectedValue === "a"}
+                      onChange={handleChange}
+                      value="a"
+                      name="radio-buttons"
+                      inputProps={{ "aria-label": "A" }}
+                    />
+                    <Typography variant="p">Regular(7")</Typography>
+                  </Grid>
+                  <Grid item xs align="right">
+                    $285
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Stack>
+                <Grid container direction="row" alignItems="center">
+                  <Grid item xs ml={2}>
+                    <Radio
+                      checked={selectedValue === "b"}
+                      onChange={handleChange}
+                      value="b"
+                      name="radio-buttons"
+                      inputProps={{ "aria-label": "B" }}
+                    />
+                    <Typography variant="p">Regular(7")</Typography>
+                  </Grid>
+                  <Grid item xs align="right">
+                    <Typography variant="p">$285</Typography>
+                  </Grid>
+                </Grid>
+
+                <Grid container m={2}>
+                  <Grid item xs>
+                    Add Toppings
+                  </Grid>
+                  <Grid item xs align="right">
+                    (optional)
+                  </Grid>
+                </Grid>
+
+                <FormGroup>
+                  <Grid container direction="row" alignItems="center">
+                    <Grid item xs ml={3}>
+                      <FormControlLabel
+                        control={<Checkbox />}
+                        label="Paneer Cubes"
+                      />
+                    </Grid>
+                    <Grid item xs align="right">
+                      $285
+                    </Grid>
+                  </Grid>
+                  <Grid container direction="row" alignItems="center">
+                    <Grid item xs ml={3}>
+                      <FormControlLabel
+                        control={<Checkbox />}
+                        label="Peperoni"
+                      />
+                    </Grid>
+                    <Grid item xs align="right">
+                      $285
+                    </Grid>
+                  </Grid>
+                  <Grid container direction="row" alignItems="center">
+                    <Grid item xs ml={3}>
+                      <FormControlLabel
+                        control={<Checkbox />}
+                        label="Peperoni"
+                      />
+                    </Grid>
+                    <Grid item xs align="right">
+                      $285
+                    </Grid>
+                  </Grid>
+                  <Grid container direction="row" alignItems="center">
+                    <Grid item xs ml={3}>
+                      <FormControlLabel
+                        control={<Checkbox />}
+                        label="Peperoni"
+                      />
+                    </Grid>
+                    <Grid item xs align="right">
+                      $285
+                    </Grid>
+                  </Grid>
+                  <Grid container direction="row" alignItems="center">
+                    <Grid item xs ml={3}>
+                      <FormControlLabel
+                        control={<Checkbox />}
+                        label="Peperoni"
+                      />
+                    </Grid>
+                    <Grid item xs align="right">
+                      $285
+                    </Grid>
+                  </Grid>
+                  <Grid container direction="row" alignItems="center">
+                    <Grid item xs ml={3}>
+                      <FormControlLabel
+                        control={<Checkbox />}
+                        label="Peperoni"
+                      />
+                    </Grid>
+                    <Grid item xs align="right">
+                      $285
+                    </Grid>
+                  </Grid>
+                </FormGroup>
+              </Stack>
+            </Box>
           </Grid>
+        </Grid>
+        <Grid
+          container
+          direction="row"
+          alignItems="center"
+          justifyContent="flex-end"
+          mt={4}
+        >
+          <Button variant="contained">Add to Cart</Button>
         </Grid>
       </Box>
     </Modal>,

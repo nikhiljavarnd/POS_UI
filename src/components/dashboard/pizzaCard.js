@@ -30,6 +30,7 @@ const PizzaCard = ({ pizza }) => {
         component="img"
         alt="green iguana"
         height="380"
+        style={{ objectFit: "contain" }}
         image={pizza.image}
       />
       <CardContent>
