@@ -1,5 +1,4 @@
 import {
-  
   TableContainer,
   Paper,
   Table,
@@ -10,10 +9,8 @@ import {
 } from "@material-ui/core";
 import React from "react";
 
-import AddToppingModal from "../toppings/addToppingModal";
-
+import AddPizzaModal from "./AddPizzaModal";
 import Deletetopping from "../toppings/deletetopping";
-
 import EditPizzaModal from "../pizza/PizzaEditModal";
 
 function createData(name, size, price) {
@@ -67,9 +64,8 @@ function PizzaListing() {
               >
                 Price
               </TableCell>
-
               <TableCell align="center">
-                <AddToppingModal />
+                <AddPizzaModal/>
               </TableCell>
               <TableCell></TableCell>
             </TableRow>
@@ -89,7 +85,6 @@ function PizzaListing() {
                 <TableCell align="center" placeholder={row.price}>
                   {row.price}
                 </TableCell>
-
                 <TableCell align="center">
                   <EditPizzaModal />
                 </TableCell>
