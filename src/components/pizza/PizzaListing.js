@@ -11,8 +11,10 @@ import {
 import React from "react";
 
 import AddToppingModal from "../toppings/addToppingModal";
-import Edittopping from "../toppings/Edittopping";
+
 import Deletetopping from "../toppings/deletetopping";
+
+import EditPizzaModal from "../pizza/PizzaEditModal";
 
 function createData(name, size, price) {
   return { name, size, price };
@@ -89,7 +91,7 @@ function PizzaListing() {
                 </TableCell>
 
                 <TableCell align="center">
-                  <Edittopping />
+                  <EditPizzaModal />
                 </TableCell>
                 <TableCell align="center">
                   <Deletetopping />
