@@ -10,8 +10,8 @@ import {
 import React from "react";
 
 import AddPizzaModal from "./AddPizzaModal";
-import Deletetopping from "../toppings/deletetopping";
-import EditPizzaModal from "../pizza/PizzaEditModal";
+import DeletePizzaModal from "./DeletePizzaModal";
+import EditPizzaModal from "./PizzaEditModal";
 
 function createData(name, size, price) {
   return { name, size, price };
@@ -89,7 +89,7 @@ function PizzaListing() {
                   <EditPizzaModal />
                 </TableCell>
                 <TableCell align="center">
-                  <Deletetopping />
+                  <DeletePizzaModal />
                 </TableCell>
               </TableRow>
             ))}
