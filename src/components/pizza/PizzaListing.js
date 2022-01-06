@@ -1,35 +1,37 @@
-import React from "react";
-import { connect } from "react-redux";
 import {
-  Table,
-  TableBody,
-  TableCell,
+  
   TableContainer,
+  Paper,
+  Table,
   TableHead,
   TableRow,
-  Paper,
+  TableCell,
+  TableBody,
 } from "@material-ui/core";
+import React from "react";
 
-import AddToppingModal from "./addToppingModal";
-import Edittopping from "./Edittopping";
-import Deletetopping from "./deletetopping";
+import AddToppingModal from "../toppings/addToppingModal";
 
-function createData(name, price) {
-  return { name, price };
+import Deletetopping from "../toppings/deletetopping";
+
+import EditPizzaModal from "../pizza/PizzaEditModal";
+
+function createData(name, size, price) {
+  return { name, size, price };
 }
 
 const rows = [
-  createData("Black olives", 350.0),
-  createData("Crisp Capsicum", 350.0),
-  createData("Golden corn", 350.0),
-  createData("Fresh Tomato", 350.0),
-  createData("Chunky Chicken", 350.0),
-  createData("Zesty Chicken", 350.0),
-  createData("Hot N Spicy Chicken", 350.0),
-  createData("Extra Cheese", 350.0),
+  createData("MARGHERITA [BIG 10'']", "Large", 350.0),
+  createData("DOUBLE CHEEZE MARGHERITA [BIG 10'']", "Large", 350.0),
+  createData("FARM HOUSE [BIG 10'']", "Medium", 350.0),
+  createData("PEPPY PANEER [BIG 10'']", "Medium", 350.0),
+  createData("MEXICAN GREEN WAVE [BIG 10'']", "Regular", 350.0),
+  createData("DELUXE VEGGIE [BIG 10'']", "Medium", 350.0),
+  createData("VEG EXTRAVEGANZA [BIG 10'']", "Regular", 350.0),
+  createData("CORN N CHEEZE [BIG 10'']", "Medium", 350.0),
 ];
 
-const ToppingListing = (props) => {
+function PizzaListing() {
   return (
     <>
       <TableContainer component={Paper}>
@@ -43,7 +45,17 @@ const ToppingListing = (props) => {
                   color: "#787878",
                 }}
               >
-                Toppings
+                Pizza name
+              </TableCell>
+              <TableCell
+                align="left"
+                style={{
+                  fontWeight: "bolder",
+                  fontSize: "22px",
+                  color: "#787878",
+                }}
+              >
+                Size
               </TableCell>
               <TableCell
                 align="center"
@@ -56,7 +68,7 @@ const ToppingListing = (props) => {
                 Price
               </TableCell>
 
-              <TableCell align="right">
+              <TableCell align="center">
                 <AddToppingModal />
               </TableCell>
               <TableCell></TableCell>
@@ -71,12 +83,15 @@ const ToppingListing = (props) => {
                 <TableCell component="th" scope="row" placeholder={row.name}>
                   {row.name}
                 </TableCell>
+                <TableCell component="th" scope="row" placeholder={row.size}>
+                  {row.size}
+                </TableCell>
                 <TableCell align="center" placeholder={row.price}>
                   {row.price}
                 </TableCell>
 
-                <TableCell align="right">
-                  <Edittopping />
+                <TableCell align="center">
+                  <EditPizzaModal />
                 </TableCell>
                 <TableCell align="center">
                   <Deletetopping />
@@ -88,6 +103,6 @@ const ToppingListing = (props) => {
       </TableContainer>
     </>
   );
-};
+}
 
-export default connect()(ToppingListing);
+export default PizzaListing;
