@@ -22,10 +22,10 @@ const style = {
 };
 
 function SelectVariants() {
-  const [age, setAge] = React.useState('');
+  const [size, setSize] = React.useState('');
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setSize(event.target.value);
   };
 
   return (
@@ -35,7 +35,7 @@ function SelectVariants() {
         <Select
           
 
-          value={age}
+          value={size}
           onChange={handleChange}
           label="Size"
         >
@@ -63,11 +63,12 @@ export default function BasicModal(props) {
     
   };
   const initialValues = {
-    topping: "",
+    name: "",
     price: "",
+    
   };
   const validationSchema = {
-    topping: "",
+    name: "",
     price: "",
   };
   const buttonStyle = { margin: 40 };
