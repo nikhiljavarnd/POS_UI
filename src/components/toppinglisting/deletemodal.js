@@ -24,12 +24,12 @@ export default function AlertDialogSlide() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-      <Icon className="delete-icon" 
-        variant="contained"
-        sx={{ marginRight: 1.2, marginBottom: 1.2 }} style={{ fontSize: "24px" }}>
-                  delete_circle
-                </Icon>
+      <Button onClick={handleClickOpen}>
+        <Icon className="delete-icon"
+          variant="contained" color='primary'
+          sx={{ marginRight: 1.2, marginBottom: 1.2 }} style={{ fontSize: "24px" }}  >
+          delete_circle
+        </Icon>
       </Button>
       <Dialog
         open={open}

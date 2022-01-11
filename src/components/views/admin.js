@@ -1,10 +1,10 @@
 import React from "react";
-import ToppingListing from "../toppings/toppingListing";
+import Listing from "../toppinglisting/listing";
 
 function AdminDashboard(props) {
   return (
     <React.Fragment>
-      <ToppingListing />
+      <Listing/>
     </React.Fragment>
   );
 }
